@@ -1,0 +1,186 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0A0F24;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px;
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Background Design */
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0A0F24 40%, #162447);
+      clip-path: polygon(0 0, 70% 0, 50% 100%, 0% 100%);
+      z-index: -1;
+    }
+
+    /* Left Side (Text) */
+    .hero-text {
+      width: 50%;
+      position: relative;
+      z-index: 2;
+      animation: slideInLeft 1s ease-out;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    .hero-text span {
+      color: #4A90E2;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      margin-top: 20px;
+    }
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .contact-info img {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    /* Button */
+    .resume-btn {
+      background-color: #4A90E2;
+      color: #fff;
+      padding: 12px 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .resume-btn i {
+      margin-right: 10px;
+    }
+    .resume-btn:hover {
+      background-color: #357ABD;
+    }
+
+    /* Right Side (Image with Hexagon Frame & Border Design) */
+    .hero-image {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: slideInRight 1s ease-out;
+    }
+    .hero-image img {
+      max-width: 80%;
+      height: auto;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      border: 5px solid #4A90E2;
+      padding: 5px;
+      background: linear-gradient(135deg, #4A90E2, #162447);
+      border-radius: 10px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-image, .hero-text {
+        width: 100%;
+      }
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="hero-section">
+    <div class="hero-text">
+      <h1>Hi</h1>
+      <h1>I'm <span>Norhan D Kuyab </span></h1>
+      <p>I'm a student "I'm motivated by a profound passion for technology and a strong willingness to learn.</p>
+      
+      <div class="contact-info">
+        <div>
+          <img src="static/images/phone.png" alt="Phone"> 
+          (+63) 978563432
+        </div>
+        <div>
+          <img src="static/images/gmail.png" alt="Gmail"> 
+          norhankuyab@gmail.com
+        </div>
+        <div>
+          <img src="static/images/location.png" alt="Location"> 
+          pebpoloan, carmen, cotabato
+        </div>
+      </div>
+      
+      <a href="{{ url_for('static', filename='files/myresume.pdf') }}" target="_blank" class="btn btn-success mt-3">View Resume (PDF)</a>
+      <a href="{{ url_for('static', filename='files/myresume.pdf') }}" download class="btn btn-primary mt-3">Download Resume (PDF)</a>
+        <i class="fas fa-download"></i>
+      </a>
+    </div>
+    <div class="hero-image">
+      <img src="static/images/khuyab.jpg" alt="Profile Picture">
+    </div>
+  </div>
+</body>
+</html>
+{% endblock %}

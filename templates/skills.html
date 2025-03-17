@@ -1,0 +1,124 @@
+<!-- templates/skills.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #0A0F24;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+    .skills-section {
+        padding: 50px 20px;
+        text-align: left;
+        max-width: 800px;
+        margin: auto;
+    }
+    .skills-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 10px;
+        color: white;
+    }
+    .skills-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: #8b5cf6;
+        margin-top: 5px;
+    }
+    .section-heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 30px;
+        color: white;
+    }
+    .skill-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .skill-item img {
+        width: 30px;
+        height: 30px;
+    }
+    .skill-item p {
+        color: white;
+        font-weight: bold;
+        margin: 0;
+    }
+    .progress-bar {
+        width: 100%;
+        background-color: #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+    }
+    .progress {
+        height: 20px;
+        background-color: #4c9aff;
+        text-align: right;
+        padding-right: 5px;
+        line-height: 20px;
+        color: white;
+        font-weight: bold;
+        width: 0;
+        animation: fillProgress 2s ease-in-out forwards;
+    }
+    @keyframes fillProgress {
+        from {
+            width: 0;
+        }
+        to {
+            width: var(--progress-width);
+        }
+    }
+</style>
+
+<div class="container skills-section">
+    <h1 class="skills-title">Skills Software</h1>
+    
+    <h3 class="section-heading">Programming/Designer Library Skills</h3>
+    <div class="skill-item">
+        <img src="static/images/PS.png" alt="Photoshop">
+        <p>Photoshop</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 43%">43%</div></div>
+    </div>
+    <div class="skill-item">
+        <img src="static/images/HT.png" alt="HTML5">
+        <p>HTML5</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 68%">68%</div></div>
+    </div>
+    <div class="skill-item">
+        <img src="static/images/CSS.png" alt="CSS3">
+        <p>CSS3</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 62%">62%</div></div>
+    </div>
+    <div class="skill-item">
+        <img src="static/images/JS.png" alt="JavaScript">
+        <p>JavaScript</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 38%">38%</div></div>
+    </div>
+    <div class="skill-item">
+        <img src="static/images/PY.png" alt="Python">
+        <p>Python</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 32%">32%</div></div>
+    </div>
+    <div class="skill-item">
+        <img src="static/images/FIGMA.png" alt="Figma">
+        <p>Figma</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 58%">58%</div></div>
+    </div>
+    <div class="skill-item">
+        <img src="static/images/MYS.png" alt="MySQL">
+        <p>MySQL</p>
+        <div class="progress-bar"><div class="progress" style="--progress-width: 63%">63%</div></div>
+    </div>
+</div>
+{% endblock %}

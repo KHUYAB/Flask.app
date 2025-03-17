@@ -1,0 +1,86 @@
+<!-- templates/login.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #141e30, #243b55);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .login-container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        text-align: center;
+        width: 350px;
+        animation: fadeIn 1s ease-out;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-50px); }
+        to { opacity: 0.1; transform: translateY(0); }
+    }
+    .login-logo {
+        width: 100px;
+        margin-bottom: 15px;
+    }
+    .form-control {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        color: white;
+    }
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .btn-login {
+        background: #4A90E2;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-login:hover {
+        background: #357ABD;
+    }
+</style>
+
+<div class="login-container">
+    <img src="{{ url_for('static', filename='images/cfcst.png') }}" alt="Logo" class="login-logo">
+    <h2 class="mb-4">Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.username(class="form-control", placeholder="Username") }}
+        </div>
+        <div class="mb-3">
+            {{ form.password(class="form-control", placeholder="Password") }}
+        </div>
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-login") }}
+        </div>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

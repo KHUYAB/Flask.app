@@ -1,0 +1,113 @@
+<!-- templates/projects.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0A0F24;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">My Work</h1>
+    <div class="row">
+        <!-- Project 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card project-card animate">
+                <img src="{{ url_for('static', filename='images/kuyab designer.png') }}" class="card-img-top zoomable" alt="Project 1">
+                <div class="card-body">
+                    <h5 class="card-title">my design</h5>
+                    <p class="card-text">here my first layout for my passion</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card project-card animate">
+                <img src="{{ url_for('static', filename='images/cook.jpg') }}" class="card-img-top zoomable" alt="Project 2">
+                <div class="card-body">
+                    <h5 class="card-title">my design for fresh orange</h5>
+                    <p class="card-text">my own design for fresh orange</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card project-card animate">
+                <img src="{{ url_for('static', filename='images/game.png') }}" class="card-img-top zoomable" alt="Project 3">
+                <div class="card-body">
+                    <h5 class="card-title">game project</h5>
+                    <p class="card-text">here my project game for app.dev subjects</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="col-md-4 mb-4">
+            <div class="card project-card animate">
+                <img src="{{ url_for('static', filename='images/th.jpg') }}" class="card-img-top zoomable" alt="Project 4">
+                <div class="card-body">
+                    <h5 class="card-title">my own layout design</h5>
+                    <p class="card-text">here my first layouts for my clients</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project 5 -->
+        <div class="col-md-4 mb-4">
+            <div class="card project-card animate">
+                <img src="{{ url_for('static', filename='images/Screenshot (18).png') }}" class="card-img-top zoomable" alt="Project 5">
+                <div class="card-body">
+                    <h5 class="card-title">here my application using figma</h5>
+                    <p class="card-text">daily clocking</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .project-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 4s ease, transform 3s ease;
+    }
+    .project-card.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .zoomable {
+        transition: transform 0.3s ease-in-out;
+    }
+    .zoomable.zoom {
+        transform: scale(1.2);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".project-card");
+        function checkScroll() {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    card.classList.add("show");
+                }
+            });
+        }
+        window.addEventListener("scroll", checkScroll);
+        checkScroll();
+
+        // Zoom effect on click
+        const images = document.querySelectorAll(".zoomable");
+        images.forEach(img => {
+            img.addEventListener("click", function () {
+                this.classList.toggle("zoom");
+            });
+        });
+    });
+</script>
+{% endblock %}

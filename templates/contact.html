@@ -1,0 +1,141 @@
+<!-- templates/contact.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="contact-container">
+    <div class="contact-image">
+        <img src="/static/images/contact.jpg" alt="Contact Illustration">
+    </div>
+    <div class="contact-form">
+        <h1>Contact Me</h1>
+        <p>Please fill out the form</p>
+        <form target="_blank" action="https://formsubmit.co/norhandkuyab@gmail.com" method="POST">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="col">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+        </form>
+        <p>Or message me through gmail accounts</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100089166460312" target="_blank"><img src="/static/images/face.png" alt="Facebook"></a>
+            <a href="https://mail.google.com/mail/u/0/?hl=en#inbox" target="_blank"><img src="/static/images/gmail.png" alt="Gmail"></a>
+            <a href="https://www.tiktok.com/@norhan.kuyab" target="_blank"><img src="/static/images/tiktok.png" alt="Tiktok"></a>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #0a0f24;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    .contact-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 50px;
+        padding: 20px;
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .contact-image img {
+        width: 400px;
+        opacity: 0;
+        transform: scale(0.8);
+        animation: zoomIn 1s ease-out forwards 0.5s;
+    }
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    .contact-form {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1s ease-out forwards 0.8s;
+        width: 100%;
+        max-width: 500px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-row {
+        display: flex;
+        gap: 15px;
+    }
+    .col {
+        flex: 1;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .btn {
+        width: 100%;
+        padding: 10px;
+        background: white;
+        color: #0a0f24;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .btn:hover {
+        background: #4A90E2;
+        color: white;
+    }
+    .social-icons {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .social-icons img {
+        width: 30px;
+        margin: 5px;
+        transition: transform 0.3s ease;
+    }
+    .social-icons img:hover {
+        transform: scale(1.2);
+    }
+</style>
+{% endblock %}
